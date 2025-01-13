@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://fpncxtibuys8"
-path="res://.godot/imported/msjh.ttc-d96ad978bf52fbd2dbb74fbae5e73f0c.fontdata"
+path="res://.godot/imported/msjh.ttc-1a91b324aa36b30de842efdd819086ea.fontdata"
 
 [deps]
 
-source_file="res://msjh.ttc"
-dest_files=["res://.godot/imported/msjh.ttc-d96ad978bf52fbd2dbb74fbae5e73f0c.fontdata"]
+source_file="res://demo/msjh.ttc"
+dest_files=["res://.godot/imported/msjh.ttc-1a91b324aa36b30de842efdd819086ea.fontdata"]
 
 [params]
 
