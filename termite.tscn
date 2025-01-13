@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://kllc3nrqjee6"]
+
+[ext_resource type="Texture2D" uid="uid://c18sgemc12cc1" path="res://assets/soldier1.png" id="1_ronyc"]
+[ext_resource type="Texture2D" uid="uid://sgnxa8mnsbkx" path="res://assets/egg.png" id="1_thfgf"]
+[ext_resource type="Texture2D" uid="uid://dqfpr5rjmpnw" path="res://assets/worker1.png" id="2_cuho8"]
+
+[node name="termite" type="AspectRatioContainer"]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -58.5
+offset_right = 62.0
+offset_bottom = 58.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="egg" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("1_thfgf")
+stretch_mode = 3
+
+[node name="worker" type="TextureButton" parent="."]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("2_cuho8")
+stretch_mode = 3
+
+[node name="soldier" type="TextureButton" parent="."]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("1_ronyc")
+stretch_mode = 3

@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2cslvd2r15pu"]
+
+[ext_resource type="Script" path="res://card.gd" id="1_i2hy2"]
+[ext_resource type="Texture2D" uid="uid://bwwxmsxdjallo" path="res://icon.svg" id="2_bwp2a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqm5o"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n13u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[node name="card" type="AspectRatioContainer"]
+offset_right = 512.0
+offset_bottom = 850.0
+pivot_offset = Vector2(256, 850)
+script = ExtResource("1_i2hy2")
+
+[node name="bg" type="Panel" parent="."]
+custom_minimum_size = Vector2(512, 850)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dqm5o")
+
+[node name="card_content" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 360)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_force_pass_scroll_events = false
+
+[node name="top" type="HBoxContainer" parent="card_content"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 30
+
+[node name="name" type="Label" parent="card_content/top"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Blank
+"
+
+[node name="resources" type="HBoxContainer" parent="card_content/top"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="card_content/top/resources"]
+layout_mode = 2
+
+[node name="image" type="TextureRect" parent="card_content"]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_bwp2a")
+expand_mode = 1
+
+[node name="frame" type="Panel" parent="card_content/image"]
+z_index = 1
+custom_minimum_size = Vector2(500, 512)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_1n13u")
+
+[node name="description" type="Label" parent="card_content"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Description"
+autowrap_mode = 3
+
+[node name="type" type="Node" parent="."]
+
+[node name="name" type="Node" parent="."]
+
+[node name="owner" type="Node" parent="."]

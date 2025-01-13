@@ -1,0 +1,1037 @@
+[gd_scene load_steps=14 format=3 uid="uid://52slknu7vubc"]
+
+[ext_resource type="Script" path="res://table.gd" id="1_w1fgn"]
+[ext_resource type="StyleBox" uid="uid://bi07ipr88hupc" path="res://draw_card.tres" id="2_1j1ve"]
+[ext_resource type="Script" path="res://values.gd" id="3_rsg7i"]
+[ext_resource type="Texture2D" uid="uid://u342vr5rrxni" path="res://assets/demo_computer.webp" id="4_dyrkx"]
+[ext_resource type="Texture2D" uid="uid://wlo40w8il1q1" path="res://assets/demo_player.webp" id="5_f7hcf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnidu"]
+bg_color = Color(0.6, 0, 0, 0.196078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmsv7"]
+bg_color = Color(0.0352941, 0, 0.6, 0.196078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu1ax"]
+bg_color = Color(1, 1, 1, 0.647059)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0uqc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1ua3"]
+content_margin_left = 3.0
+content_margin_top = 0.0
+content_margin_right = 3.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i45o0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27i0a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f342"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="table" type="Node2D"]
+position = Vector2(121, 946)
+script = ExtResource("1_w1fgn")
+
+[node name="opponent_bg" type="Panel" parent="."]
+z_index = -2
+anchors_preset = -1
+anchor_left = -6.25
+anchor_top = 1.45
+anchor_right = 6.575
+anchor_bottom = 1.45
+offset_left = -121.0
+offset_top = -943.0
+offset_right = 1159.0
+offset_bottom = -225.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wnidu")
+metadata/_edit_use_anchors_ = true
+
+[node name="player_bg" type="Panel" parent="."]
+z_index = -2
+anchors_preset = -1
+anchor_left = -9.75
+anchor_top = -0.175
+anchor_right = 3.075
+anchor_bottom = -0.175
+offset_left = -120.0
+offset_top = -692.0
+offset_right = 1160.0
+offset_bottom = 76.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kmsv7")
+metadata/_edit_use_anchors_ = true
+
+[node name="opponent" type="Control" parent="."]
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1024.0
+offset_top = -178.0
+offset_right = 1064.0
+offset_bottom = -138.0
+rotation = -3.14042
+metadata/_edit_use_anchors_ = true
+
+[node name="use_label" type="Label" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.34874
+anchor_top = 4.07618
+anchor_right = -1.34874
+anchor_bottom = 4.07618
+offset_left = 16.9999
+offset_top = 186.0
+offset_right = 161.0
+offset_bottom = 238.0
+rotation = -1.5708
+theme_override_font_sizes/font_size = 36
+text = "保留"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hold_label" type="Label" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.77628
+anchor_top = 0.549095
+anchor_right = 4.77628
+anchor_bottom = 0.549095
+offset_left = 863.0
+offset_top = 186.0
+offset_right = 1007.0
+offset_bottom = 238.0
+rotation = 1.5708
+theme_override_font_sizes/font_size = 36
+text = "使用"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="on_table" type="HBoxContainer" parent="opponent"]
+z_index = 1
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.64727
+anchor_top = 6.26649
+anchor_right = 7.64727
+anchor_bottom = 6.26649
+offset_left = -15.0
+offset_top = 509.0
+offset_right = 659.0
+offset_bottom = 1359.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -505
+metadata/_edit_use_anchors_ = true
+
+[node name="player_hand" type="HBoxContainer" parent="opponent"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 25.7901
+anchor_top = 7.44524
+anchor_right = 25.7901
+anchor_bottom = 7.44524
+offset_left = -16.0
+offset_top = 214.0
+offset_right = 3743.0
+offset_bottom = 1064.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -256
+alignment = 1
+script = ExtResource("3_rsg7i")
+metadata/_edit_use_anchors_ = true
+
+[node name="species_frame" type="Panel" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.975
+anchor_top = -0.00348816
+anchor_right = 2.975
+anchor_bottom = -0.00348816
+offset_left = 191.0
+offset_top = 525.0
+offset_right = 341.0
+offset_bottom = 762.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xu1ax")
+metadata/_edit_use_anchors_ = true
+
+[node name="species" type="HBoxContainer" parent="opponent"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.00667
+anchor_top = 6.19236
+anchor_right = 7.00667
+anchor_bottom = 6.19236
+offset_left = 176.0
+offset_top = 510.0
+offset_right = 698.0
+offset_bottom = 1360.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -256
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="nest_frame" type="Panel" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.4069
+anchor_top = 5.91046
+anchor_right = 12.4069
+anchor_bottom = 5.91046
+offset_left = 641.0
+offset_top = 525.0
+offset_right = 1019.0
+offset_bottom = 762.0
+rotation = 3.14159
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0uqc")
+metadata/_edit_use_anchors_ = true
+
+[node name="larvae" type="HBoxContainer" parent="opponent"]
+z_index = 1
+y_sort_enabled = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.37709
+anchor_top = 1.79135
+anchor_right = 7.37709
+anchor_bottom = 1.79135
+offset_left = 742.0
+offset_top = 533.0
+offset_right = 2442.0
+offset_bottom = 973.0
+rotation = 3.14159
+scale = Vector2(0.16, 0.16)
+theme_override_constants/separation = -400
+metadata/_edit_use_anchors_ = true
+
+[node name="worker" type="HBoxContainer" parent="opponent"]
+z_index = 1
+y_sort_enabled = true
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.37712
+anchor_top = 1.79136
+anchor_right = 7.37712
+anchor_bottom = 1.79136
+offset_left = 742.0
+offset_top = 606.0
+offset_right = 2442.0
+offset_bottom = 1056.0
+rotation = 3.14159
+scale = Vector2(0.16, 0.16)
+theme_override_constants/separation = -400
+metadata/_edit_use_anchors_ = true
+
+[node name="soldier" type="HBoxContainer" parent="opponent"]
+z_index = 1
+y_sort_enabled = true
+layout_direction = 1
+layout_mode = 2
+anchor_left = 7.37712
+anchor_top = 1.79143
+anchor_right = 7.37712
+anchor_bottom = 1.79143
+offset_left = 742.0
+offset_top = 681.0
+offset_right = 2442.0
+offset_bottom = 1121.0
+rotation = 3.14159
+scale = Vector2(0.16, 0.16)
+theme_override_constants/separation = -400
+metadata/_edit_use_anchors_ = true
+
+[node name="target_frame" type="Panel" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 10.3524
+anchor_top = 2.03786
+anchor_right = 10.3524
+anchor_bottom = 2.03786
+offset_left = 343.0
+offset_top = 525.0
+offset_right = 638.0
+offset_bottom = 606.0
+rotation = -3.14159
+theme_override_styles/panel = SubResource("StyleBoxFlat_xu1ax")
+metadata/_edit_use_anchors_ = true
+
+[node name="larvae_label" type="Label" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.1013
+anchor_top = 1.08582
+anchor_right = 12.1013
+anchor_bottom = 1.08582
+offset_left = 645.0
+offset_top = 549.0
+offset_right = 701.0
+offset_bottom = 588.0
+rotation = 3.14159
+theme_override_font_sizes/font_size = 28
+text = "幼蟲"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="larvae_number" type="Label" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 9.25132
+anchor_top = 1.11416
+anchor_right = 9.25132
+anchor_bottom = 1.11416
+offset_left = 701.0
+offset_top = 550.0
+offset_right = 757.0
+offset_bottom = 589.0
+rotation = 3.14159
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="soldier_label" type="Label" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.1013
+anchor_top = 1.08582
+anchor_right = 12.1013
+anchor_bottom = 1.08582
+offset_left = 645.0
+offset_top = 694.0
+offset_right = 701.0
+offset_bottom = 733.0
+rotation = 3.14159
+theme_override_font_sizes/font_size = 28
+text = "兵蟻"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="soldier_number" type="Label" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 9.25131
+anchor_top = 1.11416
+anchor_right = 9.25131
+anchor_bottom = 1.11416
+offset_left = 700.0
+offset_top = 694.0
+offset_right = 756.0
+offset_bottom = 733.0
+rotation = 3.14159
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="worker_label" type="Label" parent="opponent"]
+layout_mode = 2
+anchor_left = 12.1013
+anchor_top = 1.08581
+anchor_right = 12.1013
+anchor_bottom = 1.08581
+offset_left = 645.0
+offset_top = 621.0
+offset_right = 701.0
+offset_bottom = 660.0
+rotation = 3.14159
+theme_override_font_sizes/font_size = 28
+text = "工蟻"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="worker_number" type="Label" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 9.25132
+anchor_top = 1.11416
+anchor_right = 9.25132
+anchor_bottom = 1.11416
+offset_left = 701.0
+offset_top = 621.0
+offset_right = 757.0
+offset_bottom = 660.0
+rotation = 3.14159
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="target_table" type="HBoxContainer" parent="opponent"]
+z_index = 1
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 36)
+layout_direction = 1
+layout_mode = 2
+anchor_left = 8.02705
+anchor_top = 1.7406
+anchor_right = 8.02705
+anchor_bottom = 1.7406
+offset_left = 390.0
+offset_top = 531.0
+offset_right = 633.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.14159
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hold" type="HBoxContainer" parent="opponent"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -21.8601
+anchor_top = 7.42589
+anchor_right = -21.8601
+anchor_bottom = 7.42589
+offset_left = 845.0
+offset_top = 214.0
+offset_right = 1367.0
+offset_bottom = 1064.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -256
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="use" type="HBoxContainer" parent="opponent"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+anchor_left = 25.7108
+anchor_top = 3.36941
+anchor_right = 25.7108
+anchor_bottom = 3.36941
+offset_left = 19.0
+offset_top = 234.0
+offset_right = 541.0
+offset_bottom = 1084.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -256
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_label" type="Label" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 10.2772
+anchor_top = 1.83795
+anchor_right = 10.2772
+anchor_bottom = 1.83795
+offset_left = 345.0
+offset_top = 663.0
+offset_right = 381.0
+offset_bottom = 761.0
+rotation = 3.14159
+theme_override_font_sizes/font_size = 36
+text = "訊
+息"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint" type="TextEdit" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.30263
+anchor_top = 2.24027
+anchor_right = 8.30263
+anchor_bottom = 2.24027
+offset_left = 384.0
+offset_top = 665.0
+offset_right = 637.0
+offset_bottom = 805.0
+rotation = 3.14159
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n1ua3")
+text = "請點選抽取第一張卡。第一張卡必為物種卡。"
+wrap_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_frame" type="Panel" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.40006
+anchor_top = 2.39651
+anchor_right = 8.40006
+anchor_bottom = 3.74651
+offset_left = 382.0
+offset_top = 665.0
+offset_right = 638.0
+offset_bottom = 763.0
+rotation = 3.14159
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0uqc")
+metadata/_edit_use_anchors_ = true
+
+[node name="draw_card" type="Button" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.118315
+anchor_top = 0.25881
+anchor_right = 0.118315
+anchor_bottom = 0.25881
+offset_left = 323.0
+offset_top = 587.0
+offset_right = 618.0
+offset_bottom = 643.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -6.28319
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 0
+theme_override_styles/focus = ExtResource("2_1j1ve")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_i45o0")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_27i0a")
+theme_override_styles/pressed = ExtResource("2_1j1ve")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4f342")
+disabled = true
+toggle_mode = true
+text = "抽物種卡"
+metadata/_edit_use_anchors_ = true
+
+[node name="head_frame" type="Panel" parent="opponent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -13.593
+anchor_top = 5.94095
+anchor_right = -13.593
+anchor_bottom = 5.94095
+offset_left = 641.0
+offset_top = 525.0
+offset_right = 843.0
+offset_bottom = 762.0
+rotation = 3.14159
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0uqc")
+metadata/_edit_use_anchors_ = true
+
+[node name="head" type="VBoxContainer" parent="opponent"]
+layout_mode = 0
+offset_left = 97.2742
+offset_top = 758.606
+offset_right = 297.274
+offset_bottom = 993.606
+rotation = 3.14063
+alignment = 1
+
+[node name="photo" type="TextureRect" parent="opponent/head"]
+layout_mode = 2
+texture = ExtResource("4_dyrkx")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="opponent/head"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = " 來自敵對星系的白蟻族群"
+horizontal_alignment = 1
+
+[node name="player" type="Control" parent="."]
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 128.0
+offset_top = -690.0
+offset_right = 168.0
+offset_bottom = -650.0
+metadata/_edit_use_anchors_ = true
+
+[node name="on_table" type="HBoxContainer" parent="player"]
+z_index = 1
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 509.0
+offset_right = 659.0
+offset_bottom = 1359.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -505
+metadata/_edit_use_anchors_ = true
+
+[node name="table_label" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 474.0
+offset_right = 161.0
+offset_bottom = 526.0
+theme_override_font_sizes/font_size = 36
+text = "棄牌堆"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="draw_card" type="Button" parent="player"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 323.0
+offset_top = 587.0
+offset_right = 618.0
+offset_bottom = 643.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -6.28319
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = ExtResource("2_1j1ve")
+theme_override_styles/disabled = ExtResource("2_1j1ve")
+theme_override_styles/pressed = ExtResource("2_1j1ve")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4f342")
+text = "抽物種卡"
+metadata/_edit_use_anchors_ = true
+
+[node name="hatch_worker" type="Button" parent="player"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 728.0
+offset_top = 467.0
+offset_right = 873.0
+offset_bottom = 525.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = ExtResource("2_1j1ve")
+theme_override_styles/disabled = ExtResource("2_1j1ve")
+theme_override_styles/hover = ExtResource("2_1j1ve")
+theme_override_styles/pressed = ExtResource("2_1j1ve")
+theme_override_styles/normal = ExtResource("2_1j1ve")
+text = "產生工蟻"
+metadata/_edit_use_anchors_ = true
+
+[node name="hatch_soldier" type="Button" parent="player"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 873.0
+offset_top = 467.0
+offset_right = 1018.0
+offset_bottom = 525.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = ExtResource("2_1j1ve")
+theme_override_styles/disabled = ExtResource("2_1j1ve")
+theme_override_styles/hover = ExtResource("2_1j1ve")
+theme_override_styles/pressed = ExtResource("2_1j1ve")
+theme_override_styles/normal = ExtResource("2_1j1ve")
+text = "產生兵蟻"
+metadata/_edit_use_anchors_ = true
+
+[node name="player_hand" type="HBoxContainer" parent="player"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.575
+anchor_top = 0.55
+anchor_right = -2.575
+anchor_bottom = 0.55
+offset_left = -16.0
+offset_top = 214.0
+offset_right = 3743.0
+offset_bottom = 1064.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -256
+alignment = 1
+script = ExtResource("3_rsg7i")
+metadata/_edit_use_anchors_ = true
+
+[node name="species_label" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 474.0
+offset_right = 339.0
+offset_bottom = 526.0
+theme_override_font_sizes/font_size = 36
+text = "物種卡"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="species_frame" type="Panel" parent="player"]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 525.0
+offset_right = 341.0
+offset_bottom = 762.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xu1ax")
+metadata/_edit_use_anchors_ = true
+
+[node name="species" type="HBoxContainer" parent="player"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 176.0
+offset_top = 510.0
+offset_right = 698.0
+offset_bottom = 1360.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -256
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="nest_label" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 646.0
+offset_top = 472.0
+offset_right = 718.0
+offset_bottom = 524.0
+theme_override_font_sizes/font_size = 36
+text = "蟻巢"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="nest_frame" type="Panel" parent="player"]
+layout_mode = 0
+offset_left = 641.0
+offset_top = 525.0
+offset_right = 1019.0
+offset_bottom = 762.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0uqc")
+metadata/_edit_use_anchors_ = true
+
+[node name="larvae" type="HBoxContainer" parent="player"]
+z_index = 1
+y_sort_enabled = true
+layout_direction = 1
+layout_mode = 0
+offset_left = 742.0
+offset_top = 533.0
+offset_right = 2442.0
+offset_bottom = 973.0
+scale = Vector2(0.16, 0.16)
+theme_override_constants/separation = -400
+metadata/_edit_use_anchors_ = true
+
+[node name="worker" type="HBoxContainer" parent="player"]
+z_index = 1
+y_sort_enabled = true
+layout_direction = 1
+layout_mode = 0
+offset_left = 742.0
+offset_top = 606.0
+offset_right = 2442.0
+offset_bottom = 1056.0
+scale = Vector2(0.16, 0.16)
+theme_override_constants/separation = -400
+metadata/_edit_use_anchors_ = true
+
+[node name="soldier" type="HBoxContainer" parent="player"]
+z_index = 1
+y_sort_enabled = true
+layout_direction = 1
+layout_mode = 2
+offset_left = 742.0
+offset_top = 681.0
+offset_right = 2442.0
+offset_bottom = 1121.0
+scale = Vector2(0.16, 0.16)
+theme_override_constants/separation = -400
+metadata/_edit_use_anchors_ = true
+
+[node name="target_label" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 473.0
+offset_right = 559.0
+offset_bottom = 525.0
+theme_override_font_sizes/font_size = 36
+text = "繁殖條件"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="target_frame" type="Panel" parent="player"]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 525.0
+offset_right = 638.0
+offset_bottom = 606.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xu1ax")
+metadata/_edit_use_anchors_ = true
+
+[node name="larvae_label" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 549.0
+offset_right = 701.0
+offset_bottom = 588.0
+theme_override_font_sizes/font_size = 28
+text = "幼蟲"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="larvae_number" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 701.0
+offset_top = 550.0
+offset_right = 757.0
+offset_bottom = 589.0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="soldier_label" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 694.0
+offset_right = 701.0
+offset_bottom = 733.0
+theme_override_font_sizes/font_size = 28
+text = "兵蟻"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="soldier_number" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 694.0
+offset_right = 756.0
+offset_bottom = 733.0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="worker_label" type="Label" parent="player"]
+layout_mode = 2
+offset_left = 645.0
+offset_top = 621.0
+offset_right = 701.0
+offset_bottom = 660.0
+theme_override_font_sizes/font_size = 28
+text = "工蟻"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="worker_number" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 701.0
+offset_top = 621.0
+offset_right = 757.0
+offset_bottom = 660.0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="target_table" type="HBoxContainer" parent="player"]
+z_index = 1
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 36)
+layout_direction = 1
+layout_mode = 2
+offset_left = 390.0
+offset_top = 531.0
+offset_right = 633.0
+offset_bottom = 603.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hold" type="HBoxContainer" parent="player"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.45
+anchor_top = 6.225
+anchor_right = -0.45
+anchor_bottom = 6.225
+offset_left = 845.0
+offset_top = 214.0
+offset_right = 1367.0
+offset_bottom = 1064.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -256
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="use" type="HBoxContainer" parent="player"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+anchor_left = 4.7
+anchor_top = 2.2
+anchor_right = 4.7
+anchor_bottom = 2.2
+offset_left = 19.0
+offset_top = 234.0
+offset_right = 541.0
+offset_bottom = 1084.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.27, 0.27)
+theme_override_constants/separation = -256
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_label" type="Label" parent="player"]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 663.0
+offset_right = 381.0
+offset_bottom = 761.0
+theme_override_font_sizes/font_size = 36
+text = "訊
+息"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint" type="TextEdit" parent="player"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 665.0
+offset_right = 637.0
+offset_bottom = 762.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n1ua3")
+text = "請點選抽取第一張卡。第一張卡必為物種卡。"
+wrap_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hint_frame" type="Panel" parent="player"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 665.0
+offset_right = 638.0
+offset_bottom = 762.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0uqc")
+metadata/_edit_use_anchors_ = true
+
+[node name="head_frame" type="Panel" parent="player"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -16.468
+anchor_top = 5.94042
+anchor_right = -16.468
+anchor_bottom = 5.94042
+offset_left = 641.0
+offset_top = 525.0
+offset_right = 843.0
+offset_bottom = 762.0
+rotation = 3.14159
+theme_override_styles/panel = SubResource("StyleBoxFlat_p0uqc")
+metadata/_edit_use_anchors_ = true
+
+[node name="head" type="VBoxContainer" parent="player"]
+layout_mode = 0
+offset_left = -221.0
+offset_top = 525.0
+offset_right = -21.0
+offset_bottom = 752.0
+
+[node name="photo" type="TextureRect" parent="player/head"]
+layout_mode = 2
+texture = ExtResource("5_f7hcf")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="player/head"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "你的白蟻族群"
+horizontal_alignment = 1
+
+[node name="win" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -31.775
+anchor_top = -27.15
+anchor_right = -8.225
+anchor_bottom = -24.425
+offset_left = -122.0
+offset_top = -518.0
+offset_right = 1158.0
+offset_bottom = -398.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 58
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="opponent/draw_card" to="." method="_on_player_start"]
+[connection signal="pressed" from="player/draw_card" to="." method="_on_player_start"]
+[connection signal="pressed" from="player/hatch_worker" to="." method="_on_player_hatch_worker_pressed"]
+[connection signal="pressed" from="player/hatch_soldier" to="." method="_on_player_hatch_soldier_pressed"]
