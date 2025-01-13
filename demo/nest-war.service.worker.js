@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1736776754|1622799980';
+const CACHE_VERSION = '1736776910|1778527733';
 /** @type {string} */
 const CACHE_PREFIX = 'Nest War-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
