@@ -34,6 +34,9 @@ var opponent = _table.duplicate(true)
 	
 # Preload card scene only once
 func _ready() -> void:
+	$opponent.visible = false
+	$player.visible = false
+	$win_node.visible = false
 	card_scene = preload("res://card.tscn")
 	termite_scene = preload("res://termite.tscn")
 	player["node"] = "player"
@@ -45,9 +48,16 @@ func _process(delta: float) -> void:
 	_update_termite(opponent)
 	_update_target(opponent)
 	if player["larvae_number"] == 0 and player["worker_number"] == 0 and player["soldier_number"] == 0:
-		$win.text = "Your colony has been eliminated!"
+		$win_node/text.text = "你的族群已被消滅!"
+		$win_node.visible = true
+		$player.visible = false
+		$opponent.visible = false
+		
 	if opponent["larvae_number"] == 0 and opponent["worker_number"] == 0 and opponent["soldier_number"] == 0:
-		$win.text = "Opponent colony eliminated!"
+		$win_node/text.text = "你消滅了對手!"
+		$win_node.visible = true
+		$player.visible = false
+		$opponent.visible = false
 
 func _update_target(table: Dictionary) -> void:
 	var node_to_update = get_node(table["node"])
@@ -494,3 +504,22 @@ func _on_player_hatch_soldier_pressed() -> void:
 	
 func _on_player_start() -> void:
 	_on_draw_card_pressed(player)
+
+func _on_start_pressed() -> void:
+	$opponent.visible = true
+	$player.visible = true
+	$start.visible = false
+
+func _on_continue_pressed() -> void:
+	$win_node.visible = false
+	var root = get_tree().root
+	for child in root.get_children():
+		child.queue_free()
+	# Get the currently active scene
+	var current_scene = get_tree().root.get_child(0)
+	# Check if the current scene exists
+	if current_scene:
+		var scene_path = "res://table.tscn"  # Get the path of the current scene
+		var reloaded_scene = load(scene_path)  # Reload the scene from its path
+		if reloaded_scene:
+			root.add_child(reloaded_scene.instantiate())  # Add the reloaded scene
