@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://52slknu7vubc"]
+[gd_scene load_steps=25 format=3 uid="uid://52slknu7vubc"]
 
 [ext_resource type="Script" path="res://table.gd" id="1_w1fgn"]
 [ext_resource type="StyleBox" uid="uid://bi07ipr88hupc" path="res://draw_card.tres" id="2_1j1ve"]
 [ext_resource type="FontFile" uid="uid://fpncxtibuys8" path="res://msjh.ttc" id="2_dt3ov"]
 [ext_resource type="Script" path="res://values.gd" id="3_rsg7i"]
 [ext_resource type="Texture2D" uid="uid://u342vr5rrxni" path="res://assets/demo_computer.webp" id="4_dyrkx"]
-[ext_resource type="Texture2D" uid="uid://wlo40w8il1q1" path="res://assets/demo_player.webp" id="5_f7hcf"]
+[ext_resource type="Texture2D" uid="uid://bvsc6ixr5yacn" path="res://assets/nest_stages.webp" id="6_1klaf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnidu"]
 bg_color = Color(0.6, 0, 0, 0.196078)
@@ -60,6 +60,77 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmsv7"]
 bg_color = Color(0.0352941, 0, 0.6, 0.196078)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8t6g"]
+atlas = ExtResource("6_1klaf")
+region = Rect2(12, 38, 290, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx3hb"]
+atlas = ExtResource("6_1klaf")
+region = Rect2(360, 38, 290, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rousq"]
+atlas = ExtResource("6_1klaf")
+region = Rect2(708, 38, 290, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eol86"]
+atlas = ExtResource("6_1klaf")
+region = Rect2(12, 386, 290, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl8s5"]
+atlas = ExtResource("6_1klaf")
+region = Rect2(360, 386, 290, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pnyg"]
+atlas = ExtResource("6_1klaf")
+region = Rect2(708, 386, 290, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lhct"]
+atlas = ExtResource("6_1klaf")
+region = Rect2(12, 734, 290, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35nr3"]
+atlas = ExtResource("6_1klaf")
+region = Rect2(360, 734, 290, 290)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6btv1"]
+atlas = ExtResource("6_1klaf")
+region = Rect2(708, 734, 290, 290)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xg2r2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8t6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx3hb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rousq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eol86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl8s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pnyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lhct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35nr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6btv1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="table" type="Node2D"]
 position = Vector2(121, 946)
@@ -1011,36 +1082,25 @@ offset_bottom = 762.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_p0uqc")
 metadata/_edit_use_anchors_ = true
 
-[node name="head_frame" type="Panel" parent="player"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -16.468
-anchor_top = 5.94042
-anchor_right = -16.468
-anchor_bottom = 5.94042
-offset_left = 641.0
-offset_top = 525.0
-offset_right = 843.0
-offset_bottom = 762.0
-rotation = 3.14159
-theme_override_styles/panel = SubResource("StyleBoxFlat_p0uqc")
-metadata/_edit_use_anchors_ = true
+[node name="head" type="Control" parent="player"]
+anchors_preset = 0
+offset_left = -183.0
+offset_top = 495.0
+offset_right = 17.0
+offset_bottom = 722.0
 
-[node name="head" type="VBoxContainer" parent="player"]
-layout_mode = 0
-offset_left = -221.0
-offset_top = 525.0
-offset_right = -21.0
-offset_bottom = 752.0
-
-[node name="photo" type="TextureRect" parent="player/head"]
-layout_mode = 2
-texture = ExtResource("5_f7hcf")
-expand_mode = 4
-stretch_mode = 5
+[node name="photo" type="AnimatedSprite2D" parent="player/head"]
+position = Vector2(62, 117)
+scale = Vector2(0.731034, 0.731034)
+sprite_frames = SubResource("SpriteFrames_xg2r2")
+frame_progress = 0.366157
 
 [node name="Label" type="Label" parent="player/head"]
 layout_mode = 2
+offset_left = -47.0
+offset_top = 225.0
+offset_right = 153.0
+offset_bottom = 250.0
 theme_override_fonts/font = ExtResource("2_dt3ov")
 theme_override_font_sizes/font_size = 18
 text = "你的白蟻族群"
